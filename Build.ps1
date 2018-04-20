@@ -12,7 +12,7 @@ Push-Location;
 # make sure the releases folder exists
 if ($null -eq $BuildDir -or $BuildDir.Length -eq 0)
 {
-    $BuildDir = Join-Path -Path $scriptPath -ChildPath 'Build';
+    $BuildDir = Join-Path -Path $scriptPath -ChildPath 'build';
 }
 if (-not(Test-Path -Path $BuildDir))
 {
