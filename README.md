@@ -1,13 +1,19 @@
-# README
-## This is the README for your extension "alwayson-insights"
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+# MSSQL-Database-Insights widget
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
+This collection of widgets are designed to provide insights into MSSQL Database to further extend the built-in default widgets.
 
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Where possible all of these widgets will include more detail when you click *_Show Details_* from the widget menu.
 
-**Enjoy!**
+See the [package README](./src/README.md) for more information.
+
+## Change Log
+
+See the [Change Log](./CHANGELOG.md) for the full changes.
+
+## License
+
+This project is released under the [MIT License](./LICENSE)
+
+## Contributors
+
+* Matticusau [GitHub](https://github.com/Matticusau) | [twitter](https://twitter.com/matticusau)

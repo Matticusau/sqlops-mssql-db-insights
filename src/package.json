@@ -2,7 +2,7 @@
     "name": "mssql-db-insights",
     "displayName": "MSSQL Db Insights",
     "description": "Sql Server Database insights",
-    "version": "0.2.0",
+    "version": "0.2.0-beta1",
     "publisher": "matticusau",
     "license": "MIT",
     "author": {
