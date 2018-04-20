@@ -2,7 +2,7 @@
     "name": "mssql-db-insights",
     "displayName": "MSSQL Db Insights",
     "description": "Sql Server Database insights",
-    "version": "0.2.0-beta1",
+    "version": "0.2.0",
     "publisher": "matticusau",
     "license": "MIT",
     "author": {
@@ -120,6 +120,53 @@
                         "actions": null
                     }
                 }
+            },
+            {
+                "id": "mssql-db-vlfs.insight",
+                "contrib": {
+                    "queryFile": "./sql/mssql-db-vlfs.sql",
+                    "type": {
+                        "bar": {
+                            "dataDirection": "horizontal",
+                            "dataType": "number",
+                            "legendPosition": "none",
+                            "labelFirstColumn": false,
+                            "columnsAsLabels": false
+                        }
+                    },
+                    "details": {
+                        "queryFile": "./sql/mssql-db-vlfs-detail.sql",
+                        "label": {
+                            "icon": "database",
+                            "column": "DBName",
+                            "state": [
+                                {
+                                    "condition": {
+                                        "if": "greaterthan",
+                                        "greaterthan": "10000"
+                                    },
+                                    "color": "red"
+                                },
+                                {
+                                    "condition": {
+                                        "if": "greaterthan",
+                                        "greaterthan": "1000"
+                                    },
+                                    "color": "orange"
+                                },
+                                {
+                                    "condition": {
+                                        "if": "lessthan",
+                                        "lessthan": "999"
+                                    },
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "value": "TotalVLFs",
+                        "actions": null
+                    }
+                }
             }
         ]
         ,
@@ -148,6 +195,16 @@
                             },
                             "widget": {
                                 "mssql-db-spaceused-filetype.insight": {}
+                            }
+                        },
+                        {
+                            "name": "Database VLFs",
+                            "gridItemConfig": {
+                                "sizex": 1,
+                                "sizey": 1
+                            },
+                            "widget": {
+                                "mssql-db-vlfs.insight": {}
                             }
                         }
                     ]
