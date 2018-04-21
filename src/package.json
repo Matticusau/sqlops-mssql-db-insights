@@ -5,6 +5,7 @@
     "version": "0.2.0",
     "publisher": "matticusau",
     "license": "MIT",
+    "icon": "images/icon.png",
     "author": {
         "email": "matt.lavery@outlook.com",
         "name": "Matt Lavery",

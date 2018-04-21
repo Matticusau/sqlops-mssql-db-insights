@@ -4,7 +4,7 @@ This collection of widgets are designed to provide insights into MSSQL Database 
 
 Where possible all of these widgets will include more detail when you click *_Show Details_* from the widget menu.
 
-![Show details](../src/images/show-detail.png)
+![Show details](images/show-detail.png)
 
 ## Installation
 
@@ -28,17 +28,17 @@ If you find any issues using these widgets on these supported SQL Server version
 
 When the extension is loaded it will add a Dashboard tab. You can edit your workspace settings in the *dashboard.server.tabs* section to include this on your specific projects.
 
-![mssql-db-insights-tab.png](../src/images/mssql-db-insights-tab.png)
+![mssql-db-insights-tab.png](images/mssql-db-insights-tab.png)
 
 ## mssql-db-spaceused
 
 This Database Dashboard widget includes information on the current used space within a Database. Information will be shown in the form of a pie chart displaying the percentage of used space verses free space.
 
-![mssql-db-spaceused.png](../src/images/mssql-db-spaceused.png)
+![mssql-db-spaceused.png](images/mssql-db-spaceused.png)
 
 You can access more information about the space usaged in the detailed fly-out displayed when you select "..." on the widget.
 
-![mssql-db-spaceused-details.png](../src/images/mssql-db-spaceused-details.png)
+![mssql-db-spaceused-details.png](images/mssql-db-spaceused-details.png)
 
 To enable this widget add the following json to either your user or workspace settings in the *dashboard.database.widgets* section.
 
@@ -56,11 +56,11 @@ To enable this widget add the following json to either your user or workspace se
 
 This Database Dashboard widget includes information on the current used space within a Database broken down by the various file types (ROWS, LOG). Information will be shown in the form of a bar chart displaying the percentage of used space verses free space for each file type.
 
-![mssql-db-spaceused-filetype.png](../src/images/mssql-db-spaceused-filetype.png)
+![mssql-db-spaceused-filetype.png](images/mssql-db-spaceused-filetype.png)
 
 You can access more information about the space usaged in the detailed fly-out displayed when you select "..." on the widget.
 
-![mssql-db-spaceused-details.png](../src/images/mssql-db-spaceused-details.png)
+![mssql-db-spaceused-details.png](images/mssql-db-spaceused-details.png)
 
 To enable this widget add the following json to either your user or workspace settings in the *dashboard.database.widgets* section.
 
@@ -80,11 +80,11 @@ This Database Dashboard widget includes information on the number of VLfs in the
 
 This insight is ***not*** supported on Azure SQL Db.
 
-![mssql-db-vlfs.png](../src/images/mssql-db-vlfs.png)
+![mssql-db-vlfs.png](images/mssql-db-vlfs.png)
 
 You can access more information about the vlfs in the detailed fly-out displayed when you select "..." on the widget.
 
-![mssql-db-vlfs-details.png](../src/images/mssql-db-vlfs-details.png)
+![mssql-db-vlfs-details.png](images/mssql-db-vlfs-details.png)
 
 To enable this widget add the following json to either your user or workspace settings in the *dashboard.database.widgets* section.
 
