@@ -16,11 +16,18 @@ Current and Pre-releases will be available from the [Releases](https://github.co
 
 These widgets have been tested against the following SQL Server versions:
 
+* SQL Server 2008R2
+* SQL Server 2012
+* SQL Server 2014
 * SQL Server 2016
 * SQL Server 2017 (Windows & linux)
 * Azure SQL Db
 
 If you find any issues using these widgets on these supported SQL Server versions, or any other versions please create an issue as we would like to make these available for as many releases as possible.
+
+Thanks to the following people for testing:
+
+* Sreekanth [@mssqltrek](https://twitter.com/mssqltrek)
 
 ***We are looking for testers to confirm other environments.*** So if you find they do work on other releases let me know, and credit will be given.
 
