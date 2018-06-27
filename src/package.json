@@ -45,32 +45,32 @@
                         "queryFile": "./sql/mssql-db-spaceused-detail.sql",
                         "label": {
                             "icon": "database",
-                            "column": "file_name",
+                            "column": "Logical Name",
                             "state": [
                                 {
                                     "condition": {
                                         "if": "greaterThanOrEquals",
-                                        "greaterthan": "95"
+                                        "equals": "95"
                                     },
                                     "color": "red"
                                 },
                                 {
                                     "condition": {
                                         "if": "greaterThan",
-                                        "greaterthan": "85"
+                                        "equals": "85"
                                     },
                                     "color": "orange"
                                 },
                                 {
                                     "condition": {
                                         "if": "lessThanOrEquals",
-                                        "lessthan": "85"
+                                        "equals": "85"
                                     },
                                     "color": "green"
                                 }
                             ]
                         },
-                        "value": "used_space_percent",
+                        "value": "% Used",
                         "actions": null
                     }
                 }
@@ -92,32 +92,32 @@
                         "queryFile": "./sql/mssql-db-spaceused-detail.sql",
                         "label": {
                             "icon": "database",
-                            "column": "file_name",
+                            "column": "Logical Name",
                             "state": [
                                 {
                                     "condition": {
                                         "if": "greaterThanOrEquals",
-                                        "greaterthan": "95"
+                                        "equals": "95"
                                     },
                                     "color": "red"
                                 },
                                 {
                                     "condition": {
                                         "if": "greaterThan",
-                                        "greaterthan": "85"
+                                        "equals": "85"
                                     },
                                     "color": "orange"
                                 },
                                 {
                                     "condition": {
                                         "if": "lessThanOrEquals",
-                                        "lessthan": "85"
+                                        "equals": "85"
                                     },
                                     "color": "green"
                                 }
                             ]
                         },
-                        "value": "used_space_percent",
+                        "value": "% Used",
                         "actions": null
                     }
                 }
@@ -139,32 +139,32 @@
                         "queryFile": "./sql/mssql-db-vlfs-detail.sql",
                         "label": {
                             "icon": "database",
-                            "column": "DBName",
+                            "column": "DB Name",
                             "state": [
                                 {
                                     "condition": {
                                         "if": "greaterThanOrEquals",
-                                        "greaterthan": "10000"
+                                        "equals": "10000"
                                     },
                                     "color": "red"
                                 },
                                 {
                                     "condition": {
                                         "if": "greaterThan",
-                                        "greaterthan": "1000"
+                                        "equals": "1000"
                                     },
                                     "color": "orange"
                                 },
                                 {
                                     "condition": {
                                         "if": "lessThanOrEquals",
-                                        "lessthan": "1000"
+                                        "equals": "1000"
                                     },
                                     "color": "green"
                                 }
                             ]
                         },
-                        "value": "TotalVLFs",
+                        "value": "Total VLFs",
                         "actions": null
                     }
                 }
