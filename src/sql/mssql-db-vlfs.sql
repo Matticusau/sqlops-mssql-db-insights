@@ -1,7 +1,7 @@
 -- 
 -- Author: Matticusau
 -- Purpose: Provides insights into all VLFs in the current database
--- License: https://github.com/Matticusau/sqlops-mssql-instance-insights/blob/master/LICENSE
+-- License: https://github.com/Matticusau/sqlops-mssql-db-insights/blob/master/LICENSE
 -- Original script: https://github.com/Microsoft/DataInsightsAsia/blob/Dev/Scripts/VLFs/VLFsReport.sql
 -- 
 -- When         Who         What

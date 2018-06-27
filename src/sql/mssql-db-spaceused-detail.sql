@@ -1,7 +1,7 @@
 -- 
 -- Author: Matticusau
 -- Purpose: Provides detailed data for the DB Space Used Insights Widget
--- License: https://github.com/Matticusau/sqlops-widgets/blob/master/LICENSE
+-- License: https://github.com/Matticusau/sqlops-mssql-db-insights/blob/master/LICENSE
 -- 
 -- When         Who         What
 -- 2018-06-27   Matticusau  Friendly column names
