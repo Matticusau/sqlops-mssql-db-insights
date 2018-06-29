@@ -1,9 +1,12 @@
 -- 
 -- Author: Matticusau
 -- Purpose: Provides insights into all VLFs in the current database
--- License: https://github.com/Matticusau/sqlops-mssql-instance-insights/blob/master/LICENSE
+-- License: https://github.com/Matticusau/sqlops-mssql-db-insights/blob/master/LICENSE
 -- Original script: https://github.com/Microsoft/DataInsightsAsia/blob/Dev/Scripts/VLFs/VLFsReport.sql
 -- 
+-- When         Who         What
+-- 2018-06-27   Matticusau  Friendly column names
+--
 
 -- check if we are running on Azure PaaS
 DECLARE @isAzurePaaS BIT;
@@ -119,10 +122,10 @@ BEGIN
     PRINT '';
 
     --Return the data based on what we have found
-    SELECT a.DBName
-        , COUNT(a.FileId) AS [TotalVLFs]
-        , MAX(b.[ActiveVLFs]) AS [ActiveVLFs]
-        , (SUM(a.FileSize) / COUNT(a.FileId) / 1024) AS [AvgFileSizeKb]
+    SELECT a.DBName AS [DB Name]
+        , COUNT(a.FileId) AS [Total VLFs]
+        , MAX(b.[ActiveVLFs]) AS [Active VLFs]
+        , (SUM(a.FileSize) / COUNT(a.FileId) / 1024) AS [Avg File Size Kb]
     FROM @tblAllDBs a
     INNER JOIN (
         SELECT DBName
@@ -133,7 +136,7 @@ BEGIN
         ) b
         ON b.DBName = a.DBName
     GROUP BY a.DBName
-    ORDER BY TotalVLFs DESC;
+    ORDER BY COUNT(a.FileId) DESC;
 
 
     SET NOCOUNT OFF;
@@ -142,8 +145,8 @@ END
 ELSE
 BEGIN
     -- not supported on Azure so return an empty recordset
-    SELECT 'NotSupportedOnAzure' AS [DBName]
-        , 0 AS [TotalVLFs]
-        , 0 AS [ActiveVLFs]
-        , 0 AS [AvgFileSizeKb]
+    SELECT 'NotSupportedOnAzure' AS [DB Name]
+        , 0 AS [Total VLFs]
+        , 0 AS [Active VLFs]
+        , 0 AS [Avg File Size Kb]
 END

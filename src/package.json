@@ -2,7 +2,7 @@
     "name": "mssql-db-insights",
     "displayName": "MSSQL Db Insights",
     "description": "Sql Server Database insights",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "publisher": "matticusau",
     "license": "MIT",
     "icon": "images/icon.png",
@@ -27,6 +27,47 @@
     ],
     "homepage": "https://github.com/matticusau/sqlops-mssql-db-insights",
     "contributes": {
+        "configuration": [],
+        "commands": [],
+        "views": {
+            
+        },
+        "menus":{
+            
+        },
+        "dashboard.tabs": [
+            {
+                "id": "mssql-db-insights.tab",
+                "title": "MSSQL Db Insights",
+                "description": "SQL Server Database insights and widgets",
+                "container": {
+                    "nav-section": [
+                        {
+                            "id": "dbactivity-container",
+                            "title": "DB Activity",
+                            "icon": {
+                                "light": "./media/diagram.svg",
+                                "dark": "./media/diagram_inverse.svg"
+                            },
+                            "container": {
+                                "dbactivity-container": {}
+                            }
+                        },
+                        {
+                            "id": "dbhealth-container",
+                            "title": "DB Health",
+                            "icon": {
+                                "light": "./media/pie.svg",
+                                "dark": "./media/pie_inverse.svg"
+                            },
+                            "container": {
+                                "dbhealth-container": {}
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
         "dashboard.insights": [
             {
                 "id": "mssql-db-spaceused.insight",
@@ -45,32 +86,32 @@
                         "queryFile": "./sql/mssql-db-spaceused-detail.sql",
                         "label": {
                             "icon": "database",
-                            "column": "file_name",
+                            "column": "Logical Name",
                             "state": [
                                 {
                                     "condition": {
-                                        "if": "greaterthan",
-                                        "greaterthan": "95"
+                                        "if": "greaterThanOrEquals",
+                                        "equals": "95"
                                     },
                                     "color": "red"
                                 },
                                 {
                                     "condition": {
-                                        "if": "greaterthan",
-                                        "greaterthan": "85"
+                                        "if": "greaterThan",
+                                        "equals": "85"
                                     },
                                     "color": "orange"
                                 },
                                 {
                                     "condition": {
-                                        "if": "lessthan",
-                                        "lessthan": "86"
+                                        "if": "lessThanOrEquals",
+                                        "equals": "85"
                                     },
                                     "color": "green"
                                 }
                             ]
                         },
-                        "value": "used_space_percent",
+                        "value": "% Used",
                         "actions": null
                     }
                 }
@@ -92,32 +133,32 @@
                         "queryFile": "./sql/mssql-db-spaceused-detail.sql",
                         "label": {
                             "icon": "database",
-                            "column": "file_name",
+                            "column": "Logical Name",
                             "state": [
                                 {
                                     "condition": {
-                                        "if": "greaterthan",
-                                        "greaterthan": "95"
+                                        "if": "greaterThanOrEquals",
+                                        "equals": "95"
                                     },
                                     "color": "red"
                                 },
                                 {
                                     "condition": {
-                                        "if": "greaterthan",
-                                        "greaterthan": "85"
+                                        "if": "greaterThan",
+                                        "equals": "85"
                                     },
                                     "color": "orange"
                                 },
                                 {
                                     "condition": {
-                                        "if": "lessthan",
-                                        "lessthan": "86"
+                                        "if": "lessThanOrEquals",
+                                        "equals": "85"
                                     },
                                     "color": "green"
                                 }
                             ]
                         },
-                        "value": "used_space_percent",
+                        "value": "% Used",
                         "actions": null
                     }
                 }
@@ -139,43 +180,182 @@
                         "queryFile": "./sql/mssql-db-vlfs-detail.sql",
                         "label": {
                             "icon": "database",
-                            "column": "DBName",
+                            "column": "DB Name",
                             "state": [
                                 {
                                     "condition": {
-                                        "if": "greaterthan",
-                                        "greaterthan": "10000"
+                                        "if": "greaterThanOrEquals",
+                                        "equals": "10000"
                                     },
                                     "color": "red"
                                 },
                                 {
                                     "condition": {
-                                        "if": "greaterthan",
-                                        "greaterthan": "1000"
+                                        "if": "greaterThan",
+                                        "equals": "1000"
                                     },
                                     "color": "orange"
                                 },
                                 {
                                     "condition": {
-                                        "if": "lessthan",
-                                        "lessthan": "999"
+                                        "if": "lessThanOrEquals",
+                                        "equals": "1000"
                                     },
                                     "color": "green"
                                 }
                             ]
                         },
-                        "value": "TotalVLFs",
+                        "value": "Total VLFs",
+                        "actions": null
+                    }
+                }
+            },
+            {
+                "id": "mssql-db-sessionschart.insight",
+                "contrib": {
+                    "queryFile": "./sql/mssql-db-sessions.sql",
+                    "autoRefreshInterval": 1,
+                    "type": {
+                        "bar": {
+                            "dataDirection": "vertical",
+                            "dataType": "number",
+                            "legendPosition": "none",
+                            "labelFirstColumn": false,
+                            "columnsAsLabels": false,
+                            "yAxisLabel": "Sessions",
+                            "xAxisLabel": "Status"
+                        }
+                    },
+                    "details": {
+                        "queryFile": "./sql/mssql-db-sessions-detail.sql",
+                        "label": {
+                            "icon": "database",
+                            "column": "Session Id",
+                            "state": [
+                                {
+                                    "condition": {
+                                        "if": "equals",
+                                        "equals": "suspended"
+                                    },
+                                    "color": "red"
+                                },
+                                {
+                                    "condition": {
+                                        "if": "equals",
+                                        "equals": "runnable"
+                                    },
+                                    "color": "orange"
+                                },
+                                {
+                                    "condition": {
+                                        "if": "equals",
+                                        "equals": "sleeping"
+                                    },
+                                    "color": "black"
+                                },
+                                {
+                                    "condition": {
+                                        "if": "equals",
+                                        "equals": "running"
+                                    },
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "value": "Status",
+                        "actions": null
+                    }
+                }
+            },
+            {
+                "id": "mssql-db-cpumemdisk.insight",
+                "contrib": {
+                    "queryFile": "./sql/mssql-db-cpumemdisk.sql",
+                    "autoRefreshInterval": 1,
+                    "type": {
+                        "bar": {
+                            "dataDirection": "vertical",
+                            "dataType": "number",
+                            "legendPosition": "bottom",
+                            "labelFirstColumn": false,
+                            "columnsAsLabels": true,
+                            "yAxisLabel": "Resource Consumption",
+                            "xAxisLabel": "Session Status and Resource"
+                        }
+                    },
+                    "details": {
+                        "queryFile": "./sql/mssql-db-sessions-detail.sql",
+                        "label": {
+                            "icon": "database",
+                            "column": "Session Id",
+                            "state": [
+                                {
+                                    "condition": {
+                                        "if": "equals",
+                                        "equals": "suspended"
+                                    },
+                                    "color": "red"
+                                },
+                                {
+                                    "condition": {
+                                        "if": "equals",
+                                        "equals": "runnable"
+                                    },
+                                    "color": "orange"
+                                },
+                                {
+                                    "condition": {
+                                        "if": "equals",
+                                        "equals": "sleeping"
+                                    },
+                                    "color": "black"
+                                },
+                                {
+                                    "condition": {
+                                        "if": "equals",
+                                        "equals": "running"
+                                    },
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "value": "Status",
                         "actions": null
                     }
                 }
             }
         ]
         ,
-        "dashboard.tabs": [
+        "dashboard.containers": [
             {
-                "id": "mssql-db-insights.tab",
-                "title": "MSSQL Db Insights",
-                "description": "SQL Server Database insights and widgets",
+                "id": "dbactivity-container",
+                "container": {
+                    "widgets-container": [
+                        {
+                            "name": "Database Sessions",
+                            "gridItemConfig": {
+                                "sizex": 2,
+                                "sizey": 1
+                            },
+                            "widget": {
+                                "mssql-db-sessionschart.insight": {}
+                            }
+                        },
+                        {
+                            "name": "Database Resource Usage",
+                            "gridItemConfig": {
+                                "sizex": 2,
+                                "sizey": 1
+                            },
+                            "widget": {
+                                "mssql-db-cpumemdisk.insight": {}
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "dbhealth-container",
                 "container": {
                     "widgets-container": [
                         {

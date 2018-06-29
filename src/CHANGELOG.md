@@ -6,6 +6,22 @@ All notable changes to the "mssql-db-insights" extension will be documented in t
 
 - None
 
+## [0.2.2]
+
+### Added
+
+- Multiple containers/dashboards
+- DB Session insight
+- DB Resource Consumption insight
+- Autorefreh for certain insights
+
+### Changed
+
+- New gallery logo
+- Fixed license url in TSQL
+- Friendly column names in charts
+- Fixed icon colors in fly out window
+
 ## [0.2.0]
 
 ### Added
