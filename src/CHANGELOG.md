@@ -4,7 +4,7 @@ All notable changes to the "mssql-db-insights" extension will be documented in t
 
 ## [Unreleased]
 
-- None
+- New SVG icons for dashboard containers
 
 ## [0.2.2]
 

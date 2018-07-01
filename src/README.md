@@ -104,3 +104,10 @@ To enable this widget add the following json to either your user or workspace se
     }
 }
 ```
+
+## Vector Graphics
+
+The vector graphics used in this tool are sourced from the following authors
+
+Icons made by [Freepik](http://www.freepik.com) sourced from [Flaticon](https://www.flaticon.com/) and is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
+Icons made by [Gregor Cresnar](https://www.flaticon.com/authors/gregor-cresnar) sourced from [Flaticon](https://www.flaticon.com/) and is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)

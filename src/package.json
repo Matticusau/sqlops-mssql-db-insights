@@ -2,7 +2,7 @@
     "name": "mssql-db-insights",
     "displayName": "MSSQL Db Insights",
     "description": "Sql Server Database insights",
-    "version": "0.2.2",
+    "version": "0.2.3-beta1",
     "publisher": "matticusau",
     "license": "MIT",
     "icon": "images/icon.png",
@@ -46,8 +46,8 @@
                             "id": "dbactivity-container",
                             "title": "DB Activity",
                             "icon": {
-                                "light": "./media/diagram.svg",
-                                "dark": "./media/diagram_inverse.svg"
+                                "light": "./media/line-chart-lightbg.svg",
+                                "dark": "./media/line-chart-darkbg.svg"
                             },
                             "container": {
                                 "dbactivity-container": {}
@@ -57,8 +57,8 @@
                             "id": "dbhealth-container",
                             "title": "DB Health",
                             "icon": {
-                                "light": "./media/pie.svg",
-                                "dark": "./media/pie_inverse.svg"
+                                "light": "./media/heartbeat-lightbg.svg",
+                                "dark": "./media/heartbeat-darkbg.svg"
                             },
                             "container": {
                                 "dbhealth-container": {}
