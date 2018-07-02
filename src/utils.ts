@@ -1,3 +1,13 @@
+//
+// Author:  Matt Lavery
+// Date:    02/07/2018
+// Purpose: Utils
+//
+// When         Who         What
+// ------------------------------------------------------------------------------------------
+// 02/07/2018   MLavery     Strictly set 'any' types to fix src\extension.ts(50,55): error TS7006: Parameter 'connection' implicitly has an 'any' type.
+//
+
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the Source EULA. See License.txt in the project root for license information.
@@ -28,19 +38,20 @@ export function logDebug(msg: any): void {
 }
 
 export function renderTemplateHtml(extensionPath: string, templateName: string, templateValues: object): Thenable<string> {
-    let templatePath = path.join(extensionPath, 'resources', templateName);
+    // let templatePath = path.join(extensionPath, 'resources', templateName);
+    let templatePath: string = path.join(extensionPath, 'resources', templateName);
 
     // 1) Read the template from the disk
     // 2) Compile it as a handlebars template and render the HTML
     // 3) On failure, return a simple string as an error
     return fs.readFile(templatePath, 'utf-8')
-        .then(templateText => {
+        .then((templateText: string) => {
             let template = handlebars.compile(templateText);
             return template(templateValues);
         })
         .then(
             undefined,
-            error => {
+            (error: any) => {
                 logDebug(error);
                 return LocalizedConstants.msgErrorLoadingTab;
             }

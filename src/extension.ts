@@ -1,3 +1,13 @@
+//
+// Author:  Matt Lavery
+// Date:    02/07/2018
+// Purpose: extension entry module
+//
+// When         Who         What
+// ------------------------------------------------------------------------------------------
+// 02/07/2018   MLavery     Strictly set 'any' types to fix src\extension.ts(50,55): error TS7006: Parameter 'connection' implicitly has an 'any' type.
+//
+
 'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
@@ -47,10 +57,10 @@ export function activate(context: vscode.ExtensionContext) {
         // The code you place here will be executed every time your command is executed
 
         // Display a message box to the user
-        sqlops.connection.getCurrentConnection().then(connection => {
+        sqlops.connection.getCurrentConnection().then((connection: any) => {
             let connectionId = connection ? connection.connectionId : 'No connection found!';
             vscode.window.showInformationMessage(connectionId);
-        }, error => {
+        }, (error: any) => {
              console.info(error);
         });
     }));

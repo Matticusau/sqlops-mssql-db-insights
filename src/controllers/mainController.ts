@@ -1,3 +1,13 @@
+//
+// Author:  Matt Lavery
+// Date:    02/07/2018
+// Purpose: Main Controller
+//
+// When         Who         What
+// ------------------------------------------------------------------------------------------
+// 02/07/2018   MLavery     Strictly set 'any' types to fix src\extension.ts(50,55): error TS7006: Parameter 'connection' implicitly has an 'any' type.
+//
+
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the Source EULA. See License.txt in the project root for license information.
@@ -55,7 +65,7 @@ export default class MainController extends ControllerBase {
         // sqlops.dashboard.registerWebviewProvider('webviewExample', e => {
         //     e.html = webviewExampleHtml;
         // });
-        sqlops.dashboard.registerWebviewProvider('dbproperties', e => {
+        sqlops.dashboard.registerWebviewProvider('dbproperties', (e: any) => {
             e.html = dbpropertiesHtml;
         });
 

@@ -30,7 +30,7 @@
         "onCommand:extension.sayHello",
         "onCommand:extension.showCurrentConnection"
     ],
-    "main": "./out/extension",
+    "main": "./out/src/extension",
     "contributes": {
         "configuration": [],
         "commands": [
@@ -56,19 +56,19 @@
                             "id": "dbproperties",
                             "title": "DB Properties",
                             "icon": {
-                                "light": "./src/media/dbproperties-lightbg.svg",
-                                "dark": "./src/media/dbproperties-darkbg.svg"
+                                "light": "./out/src/media/dbproperties-lightbg.svg",
+                                "dark": "./out/src/media/dbproperties-darkbg.svg"
                             },
                             "container": {
-                                "dbproperties-container": null
+                                "webview-container": null
                             }
                         },
                         {
                             "id": "dbactivity-container",
                             "title": "DB Activity",
                             "icon": {
-                                "light": "./src/media/line-chart-lightbg.svg",
-                                "dark": "./src/media/line-chart-darkbg.svg"
+                                "light": "./out/src/media/line-chart-lightbg.svg",
+                                "dark": "./out/src/media/line-chart-darkbg.svg"
                             },
                             "container": {
                                 "dbactivity-container": {}
@@ -78,8 +78,8 @@
                             "id": "dbhealth-container",
                             "title": "DB Health",
                             "icon": {
-                                "light": "./src/media/heartbeat-lightbg.svg",
-                                "dark": "./src/media/heartbeat-darkbg.svg"
+                                "light": "./out/src/media/heartbeat-lightbg.svg",
+                                "dark": "./out/src/media/heartbeat-darkbg.svg"
                             },
                             "container": {
                                 "dbhealth-container": {}
@@ -93,7 +93,7 @@
             {
                 "id": "mssql-db-spaceused.insight",
                 "contrib": {
-                    "queryFile": "./src/sql/mssql-db-spaceused.sql",
+                    "queryFile": "./out/src/sql/mssql-db-spaceused.sql",
                     "type": {
                         "pie": {
                             "dataDirection": "horizontal",
@@ -104,7 +104,7 @@
                         }
                     },
                     "details": {
-                        "queryFile": "./src/sql/mssql-db-spaceused-detail.sql",
+                        "queryFile": "./out/src/sql/mssql-db-spaceused-detail.sql",
                         "label": {
                             "icon": "database",
                             "column": "Logical Name",
@@ -140,7 +140,7 @@
             {
                 "id": "mssql-db-spaceused-filetype.insight",
                 "contrib": {
-                    "queryFile": "./src/sql/mssql-db-spaceused-filetype.sql",
+                    "queryFile": "./out/src/sql/mssql-db-spaceused-filetype.sql",
                     "type": {
                         "horizontalBar": {
                             "dataDirection": "vertical",
@@ -151,7 +151,7 @@
                         }
                     },
                     "details": {
-                        "queryFile": "./src/sql/mssql-db-spaceused-detail.sql",
+                        "queryFile": "./out/src/sql/mssql-db-spaceused-detail.sql",
                         "label": {
                             "icon": "database",
                             "column": "Logical Name",
@@ -187,7 +187,7 @@
             {
                 "id": "mssql-db-vlfs.insight",
                 "contrib": {
-                    "queryFile": "./src/sql/mssql-db-vlfs.sql",
+                    "queryFile": "./out/src/sql/mssql-db-vlfs.sql",
                     "type": {
                         "bar": {
                             "dataDirection": "horizontal",
@@ -198,7 +198,7 @@
                         }
                     },
                     "details": {
-                        "queryFile": "./src/sql/mssql-db-vlfs-detail.sql",
+                        "queryFile": "./out/src/sql/mssql-db-vlfs-detail.sql",
                         "label": {
                             "icon": "database",
                             "column": "DB Name",
@@ -234,7 +234,7 @@
             {
                 "id": "mssql-db-sessionschart.insight",
                 "contrib": {
-                    "queryFile": "./src/sql/mssql-db-sessions.sql",
+                    "queryFile": "./out/src/sql/mssql-db-sessions.sql",
                     "autoRefreshInterval": 1,
                     "type": {
                         "bar": {
@@ -248,7 +248,7 @@
                         }
                     },
                     "details": {
-                        "queryFile": "./src/sql/mssql-db-sessions-detail.sql",
+                        "queryFile": "./out/src/sql/mssql-db-sessions-detail.sql",
                         "label": {
                             "icon": "database",
                             "column": "Session Id",
@@ -291,7 +291,7 @@
             {
                 "id": "mssql-db-cpumemdisk.insight",
                 "contrib": {
-                    "queryFile": "./src/sql/mssql-db-cpumemdisk.sql",
+                    "queryFile": "./out/src/sql/mssql-db-cpumemdisk.sql",
                     "autoRefreshInterval": 1,
                     "type": {
                         "bar": {
@@ -305,7 +305,7 @@
                         }
                     },
                     "details": {
-                        "queryFile": "./src/sql/mssql-db-sessions-detail.sql",
+                        "queryFile": "./out/src/sql/mssql-db-sessions-detail.sql",
                         "label": {
                             "icon": "database",
                             "column": "Session Id",
@@ -347,12 +347,6 @@
             }
         ],
         "dashboard.containers": [
-            {
-                "id": "dbproperties-container",
-                "container": {
-                    "widgets-container": []
-                }
-            },
             {
                 "id": "dbactivity-container",
                 "container": {
@@ -429,12 +423,15 @@
     "dependencies": {
         "fs-extra": "^5.0.0",
         "handlebars": "^4.0.11",
+        "openurl": "^1.1.1",
+        "sqlops": "github:anthonydresser/sqlops-extension-sqlops",
         "vscode-nls": "2.0.2"
     },
     "devDependencies": {
         "@types/handlebars": "^4.0.11",
         "@types/mocha": "^2.2.42",
         "@types/node": "^7.0.43",
+        "@types/fs-extra": "5.0.2",
         "child-process-promise": "^2.2.1",
         "del": "^3.0.0",
         "gulp": "^4.0.0",
@@ -443,7 +440,6 @@
         "gulp-tslint": "^6.0.2",
         "gulp-typescript": "^3.2.4",
         "should": "^13.2.1",
-        "sqlops": "github:anthonydresser/sqlops-extension-sqlops",
         "temp-write": "^3.4.0",
         "tslint": "^5.8.0",
         "typemoq": "^2.1.0",
