@@ -18,8 +18,14 @@ export function getDbProperties(): Thenable<any> {
     
     return sqlops.connection.getCurrentConnection().then((connection: any) => {
         console.log('connection: '+JSON.stringify(connection));
-        let dbpropertiesValues = { name: 'Test DB', collation: 'Latin something something' };
-        return dbpropertiesValues;
+        if (connection.connectionProvider === 'MSSQL') {
+            let dbpropertiesValues = { name: 'Test DB', collation: 'Latin something something' };
+            return dbpropertiesValues;
+        }
+        else
+        {
+            return { name: '<< Non MSSQL Database >>' };
+        }
         // vscode.window.showInformationMessage(connectionId);
     }, (error: any) => {
          console.info(error);

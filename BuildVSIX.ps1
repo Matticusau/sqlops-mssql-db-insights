@@ -1,3 +1,13 @@
+#
+# Author:  Matt Lavery
+# Date:    03/07/2018
+# Purpose: Build VSIX package for project
+#
+# When         Who         What
+# ------------------------------------------------------------------------------------------
+# 03/07/2018   MLavery     Updated for new project structure
+#
+
 [CmdLetBinding()]
 Param (
     [Parameter()]
@@ -12,7 +22,7 @@ Push-Location;
 # make sure the releases folder exists
 if ($null -eq $BuildDir -or $BuildDir.Length -eq 0)
 {
-    $BuildDir = Join-Path -Path $scriptPath -ChildPath 'build';
+    $BuildDir = Join-Path -Path $scriptPath -ChildPath '_vsix';
 }
 if (-not(Test-Path -Path $BuildDir))
 {
