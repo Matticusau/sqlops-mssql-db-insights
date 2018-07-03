@@ -5,5 +5,5 @@
 'use strict';
 
 // CONFIG VALUES ///////////////////////////////////////////////////////////
-export const extensionConfigSectionName = 'extensionSamples';
+export const extensionConfigSectionName = 'mssql-db-insights';
 export const configLogDebugInfo = 'logDebugInfo';

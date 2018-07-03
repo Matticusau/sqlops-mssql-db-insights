@@ -28,7 +28,8 @@
     ],
     "activationEvents": [
         "onCommand:extension.sayHello",
-        "onCommand:extension.showCurrentConnection"
+        "onCommand:extension.showCurrentConnection",
+        "*"
     ],
     "main": "./out/src/extension",
     "contributes": {

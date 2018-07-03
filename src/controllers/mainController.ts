@@ -15,11 +15,13 @@
 
 'use strict';
 
+import * as vscode from 'vscode';
 import * as sqlops from 'sqlops';
 import * as Utils from '../utils';
 import ControllerBase from './controllerBase';
 import * as fs from 'fs';
 import * as path from 'path';
+import * as dbprops from './dbPropsController';
 
 /**
  * The main controller class that initializes the extension
@@ -34,7 +36,7 @@ export default class MainController extends ControllerBase {
     }
 
     public activate(): Promise<boolean> {
-        const dbpropertiesHtml = fs.readFileSync(path.join(__dirname, 'dbProperties.html')).toString();
+        
         // const webviewExampleHtml = fs.readFileSync(path.join(__dirname, 'webviewExample.html')).toString();
         // const buttonHtml = fs.readFileSync(path.join(__dirname, 'button.html')).toString();
         // const counterHtml = fs.readFileSync(path.join(__dirname, 'counter.html')).toString();
@@ -65,8 +67,45 @@ export default class MainController extends ControllerBase {
         // sqlops.dashboard.registerWebviewProvider('webviewExample', e => {
         //     e.html = webviewExampleHtml;
         // });
+
+        // const dbpropertiesHtml = fs.readFileSync(path.join(__dirname, 'dbProperties.html')).toString();
+        // console.log('dbpropertiesHtml'+dbpropertiesHtml);
+        
         sqlops.dashboard.registerWebviewProvider('dbproperties', (e: any) => {
-            e.html = dbpropertiesHtml;
+            dbprops.getDbProperties()
+            .then(dbpropertiesValues => {
+                console.log('dbpropertiesValues:'+JSON.stringify(dbpropertiesValues));
+                Utils.renderTemplateHtml(path.join(__dirname, '..'), 'dbProperties.html', dbpropertiesValues)
+                    .then(html => {
+                        console.log('dbpropertiesHtml'+html);
+                        console.log('setting e.html');
+                        e.html = html;
+                    });
+                });
+            //console.log('setting e.html to dbpropertiesHtml');
+            //e.html = dbpropertiesHtml;
+        });
+
+        //
+        // register the commands
+        //
+        vscode.commands.registerCommand('extension.sayHello', () => {
+            // The code you place here will be executed every time your command is executed
+    
+            // Display a message box to the user
+            vscode.window.showInformationMessage('Hello World!');
+        });
+
+        vscode.commands.registerCommand('extension.showCurrentConnection', () => {
+            // The code you place here will be executed every time your command is executed
+    
+            // Display a message box to the user
+            sqlops.connection.getCurrentConnection().then((connection: any) => {
+                let connectionId = connection ? connection.connectionId : 'No connection found!';
+                vscode.window.showInformationMessage(connectionId);
+            }, (error: any) => {
+                 console.info(error);
+            });
         });
 
         return Promise.resolve(true);
