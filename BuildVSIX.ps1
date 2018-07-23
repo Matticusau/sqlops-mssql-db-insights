@@ -6,7 +6,7 @@
 # When         Who         What
 # ------------------------------------------------------------------------------------------
 # 03/07/2018   MLavery     Updated for new project structure
-#
+# 23/07/2018   MLavery     Added exclusion for node_modules directory for issue #20
 
 [CmdLetBinding()]
 Param (
@@ -29,8 +29,8 @@ if (-not(Test-Path -Path $BuildDir))
     New-Item -Path $BuildDir -ItemType Directory -Force | Out-Null;
 }
 
-# Get the packages to build in this repo
-$packageFiles = Get-ChildItem -Path $scriptPath -Recurse -Filter 'package.json'
+# Get the packages to build in this repo (ignore the node_modules though)
+$packageFiles = Get-ChildItem -Path $scriptPath -Recurse -Filter 'package.json' -File | Where-Object DirectoryName -NotLike "$(Join-Path -Path $($scriptPath) -ChildPath 'node_modules')\*";
 
 if ($packageFiles.Count -eq 0)
 {
